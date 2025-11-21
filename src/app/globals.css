@@ -1,113 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-@layer base {
-  :root {
-    --background: 249 250 251;
-    --foreground: 17 24 39;
-    --card: 255 255 255;
-    --card-foreground: 17 24 39;
-    --primary: 59 130 246;
-    --primary-foreground: 255 255 255;
-    --muted: 243 244 246;
-    --muted-foreground: 107 114 128;
-    --border: 229 231 235;
-  }
-
-  .dark {
-    --background: 17 24 39;
-    --foreground: 249 250 251;
-    --card: 31 41 55;
-    --card-foreground: 249 250 251;
-    --primary: 96 165 250;
-    --primary-foreground: 17 24 39;
-    --muted: 55 65 81;
-    --muted-foreground: 156 163 175;
-    --border: 75 85 99;
-  }
-
-  body {
-    @apply bg-gray-50 text-gray-900 font-sans dark:bg-gray-900 dark:text-gray-100;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  * {
-    @apply border-gray-200 dark:border-gray-700;
-  }
+/* ------------------------------
+   Light Mode Theme Variables
+--------------------------------*/
+:root {
+  --background: #F9FAFB;
+  --foreground: #111827;
+  --card: #FFFFFF;
+  --card-foreground: #111827;
+  --primary: #3B82F6;
+  --primary-foreground: #FFFFFF;
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+  --border: #E5E7EB;
 }
 
-@layer components {
-  .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  .page-header {
-    @apply mb-8;
-  }
-
-  .page-title {
-    @apply text-3xl font-bold text-gray-900 mb-2;
-  }
-
-  .page-description {
-    @apply text-gray-600;
-  }
-
-  .section-title {
-    @apply text-2xl font-semibold text-gray-900 mb-4;
-  }
-
-  .form-section {
-    @apply space-y-6;
-  }
-
-  .habit-card {
-    @apply bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200;
-  }
-
-  .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
-  }
-
-  .badge-primary {
-    @apply bg-primary-100 text-primary-800;
-  }
-
-  .badge-success {
-    @apply bg-green-100 text-green-800;
-  }
-
-  .badge-warning {
-    @apply bg-yellow-100 text-yellow-800;
-  }
-
-  .badge-error {
-    @apply bg-red-100 text-red-800;
-  }
-
-  .stat-card {
-    @apply bg-gradient-to-br from-primary to-primary-600 text-white rounded-xl p-6 shadow-lg;
-  }
+/* ------------------------------
+   Dark Mode Theme Variables
+--------------------------------*/
+.dark {
+  --background: #111827;
+  --foreground: #F9FAFB;
+  --card: #1F2937;
+  --card-foreground: #F9FAFB;
+  --primary: #60A5FA;
+  --primary-foreground: #111827;
+  --muted: #374151;
+  --muted-foreground: #9CA3AF;
+  --border: #4B5563;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* ------------------------------
+   Theme Mapping
+--------------------------------*/
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--primary);
 
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
+  --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'Roboto Mono', monospace;
 }
 
-/* Custom animations */
-@keyframes fadeIn {
+/* ------------------------------
+   Global Styles
+--------------------------------*/
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-family-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+  border-color: var(--border);
+}
+
+/* ------------------------------
+   Components
+--------------------------------*/
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.page-header {
+  @apply mb-8;
+}
+
+.page-title {
+  @apply text-3xl font-bold mb-2;
+}
+
+.page-description {
+  @apply text-muted-foreground;
+}
+
+.section-title {
+  @apply text-2xl font-semibold mb-4;
+}
+
+.form-section {
+  @apply space-y-6;
+}
+
+.habit-card {
+  @apply bg-card rounded-xl border border-border p-6 hover:shadow-md transition-shadow duration-200;
+}
+
+/* Badges */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-primary {
+  @apply bg-primary/10 text-primary;
+}
+
+.badge-success {
+  @apply bg-green-100 text-green-800;
+}
+
+.badge-warning {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.badge-error {
+  @apply bg-red-100 text-red-800;
+}
+
+/* Stat Card */
+.stat-card {
+  @apply bg-gradient-to-br from-primary to-primary/80 text-primary-foreground rounded-xl p-6 shadow-lg;
+}
+
+/* ------------------------------
+   Utility Classes
+--------------------------------*/
+.text-balance {
+  text-wrap: balance;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.transition-theme {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.transition-transform-opacity {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.hover-scale {
+  transition: transform 0.2s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* Skeleton */
+.skeleton {
+  @apply bg-muted dark:bg-muted rounded animate-pulse;
+}
+
+/* ------------------------------
+   Animations
+--------------------------------*/
+@keyframes fade-in {
   from {
     opacity: 0;
   }
@@ -117,7 +183,7 @@
   }
 }
 
-@keyframes fadeOut {
+@keyframes fade-out {
   from {
     opacity: 1;
   }
@@ -127,7 +193,7 @@
   }
 }
 
-@keyframes slideUp {
+@keyframes slide-up {
   from {
     transform: translateY(20px);
     opacity: 0;
@@ -139,7 +205,7 @@
   }
 }
 
-@keyframes slideDown {
+@keyframes slide-down {
   from {
     transform: translateY(-20px);
     opacity: 0;
@@ -151,7 +217,7 @@
   }
 }
 
-@keyframes slideInRight {
+@keyframes slide-in-right {
   from {
     transform: translateX(100%);
     opacity: 0;
@@ -163,7 +229,7 @@
   }
 }
 
-@keyframes slideInLeft {
+@keyframes slide-in-left {
   from {
     transform: translateX(-100%);
     opacity: 0;
@@ -175,7 +241,7 @@
   }
 }
 
-@keyframes bounceIn {
+@keyframes bounce-in {
   0% {
     transform: scale(0.3);
     opacity: 0;
@@ -195,13 +261,13 @@
   }
 }
 
-@keyframes scaleIn {
-  0% {
+@keyframes scale-in {
+  from {
     transform: scale(0.95);
     opacity: 0;
   }
 
-  100% {
+  to {
     transform: scale(1);
     opacity: 1;
   }
@@ -249,41 +315,41 @@
   }
 }
 
-/* Animation utility classes */
+/* Animation utilities */
 .animate-fade-in {
-  animation: fadeIn 0.3s ease-out forwards;
+  animation: fade-in 0.3s ease-out forwards;
 }
 
 .animate-fade-out {
-  animation: fadeOut 0.3s ease-out forwards;
+  animation: fade-out 0.3s ease-out forwards;
 }
 
 .animate-slide-up {
-  animation: slideUp 0.4s ease-out forwards;
+  animation: slide-up 0.4s ease-out forwards;
 }
 
 .animate-slide-down {
-  animation: slideDown 0.4s ease-out forwards;
+  animation: slide-down 0.4s ease-out forwards;
 }
 
 .animate-slide-in-right {
-  animation: slideInRight 0.3s ease-out forwards;
+  animation: slide-in-right 0.3s ease-out forwards;
 }
 
 .animate-slide-in-left {
-  animation: slideInLeft 0.3s ease-out forwards;
+  animation: slide-in-left 0.3s ease-out forwards;
 }
 
 .animate-bounce-in {
-  animation: bounceIn 0.5s ease-out forwards;
+  animation: bounce-in 0.5s ease-out forwards;
 }
 
 .animate-scale-in {
-  animation: scaleIn 0.2s ease-out forwards;
+  animation: scale-in 0.2s ease-out forwards;
 }
 
 .animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .animate-shimmer {
@@ -305,7 +371,7 @@
 /* Staggered animations */
 .stagger-animation>* {
   opacity: 0;
-  animation: slideUp 0.4s ease-out forwards;
+  animation: slide-up 0.4s ease-out forwards;
 }
 
 .stagger-animation>*:nth-child(1) {
@@ -348,42 +414,10 @@
   animation-delay: 450ms;
 }
 
-/* Transition utilities */
-.transition-theme {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-.transition-transform-opacity {
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-/* Hover effects */
-.hover-lift {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-}
-
-.hover-scale {
-  transition: transform 0.2s ease;
-}
-
-.hover-scale:hover {
-  transform: scale(1.02);
-}
-
-/* Loading skeleton */
-.skeleton {
-  @apply bg-gray-200 dark:bg-gray-700 rounded animate-pulse;
-}
-
-/* Print styles */
+/* Print */
 @media print {
   body {
-    @apply bg-white;
+    background: #FFFFFF !important;
   }
 
   .no-print {
