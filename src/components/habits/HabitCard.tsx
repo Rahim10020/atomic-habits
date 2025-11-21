@@ -31,8 +31,8 @@ export const HabitCard: React.FC<HabitCardProps> = ({
     return (
         <div
             className={cn(
-                'bg-white rounded-lg border shadow-sm transition-all duration-200',
-                isCompleted ? 'border-green-300 bg-green-50' : 'border-gray-200',
+                'bg-white dark:bg-gray-800 rounded-lg border shadow-sm transition-all duration-200 hover-lift',
+                isCompleted ? 'border-green-300 bg-green-50 dark:bg-green-900/20 dark:border-green-700' : 'border-gray-200 dark:border-gray-700',
                 !canComplete && 'opacity-60'
             )}
         >
@@ -61,12 +61,12 @@ export const HabitCard: React.FC<HabitCardProps> = ({
                     {/* Habit Info */}
                     <div className="flex-1 min-w-0">
                         <h3 className={cn(
-                            'font-medium text-gray-900 truncate',
-                            isCompleted && 'line-through text-gray-500'
+                            'font-medium text-gray-900 dark:text-white truncate',
+                            isCompleted && 'line-through text-gray-500 dark:text-gray-400'
                         )}>
                             {habit.name}
                         </h3>
-                        <p className="text-sm text-gray-500 truncate">
+                        <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
                             {habit.time_of_day} - {habit.location}
                         </p>
                     </div>
@@ -84,7 +84,7 @@ export const HabitCard: React.FC<HabitCardProps> = ({
                         <button
                             onClick={() => setIsExpanded(!isExpanded)}
                             className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
-                            aria-label={isExpanded ? 'Réduire' : 'Développer'}
+                            aria-label={isExpanded ? 'Rï¿½duire' : 'Dï¿½velopper'}
                         >
                             <svg
                                 className={cn('w-5 h-5 transition-transform', isExpanded && 'rotate-180')}
@@ -130,7 +130,7 @@ export const HabitCard: React.FC<HabitCardProps> = ({
                         {/* Immediate Reward */}
                         {habit.immediate_reward && (
                             <div>
-                                <span className="text-xs font-medium text-gray-500 uppercase">Récompense immédiate</span>
+                                <span className="text-xs font-medium text-gray-500 uppercase">Rï¿½compense immï¿½diate</span>
                                 <p className="text-sm text-gray-700">{habit.immediate_reward}</p>
                             </div>
                         )}

@@ -28,12 +28,12 @@ export const SystemsOverview: React.FC<SystemsOverviewProps> = ({
     const systemHealth = calculateSystemHealth(habits, completionRate);
 
     return (
-        <div className={cn('bg-white rounded-lg border border-gray-200 overflow-hidden', className)}>
+        <div className={cn('bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden animate-fade-in', className)}>
             {/* Header */}
             <div className="p-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
-                <h3 className="text-lg font-semibold">Vue d&apos;ensemble du système</h3>
+                <h3 className="text-lg font-semibold">Vue d&apos;ensemble du systï¿½me</h3>
                 <p className="text-sm text-indigo-100 mt-1">
-                    Votre système d&apos;habitudes basé sur l&apos;identité
+                    Votre systï¿½me d&apos;habitudes basï¿½ sur l&apos;identitï¿½
                 </p>
             </div>
 
@@ -47,7 +47,7 @@ export const SystemsOverview: React.FC<SystemsOverviewProps> = ({
                             </svg>
                         </div>
                         <div>
-                            <span className="text-xs font-medium text-indigo-600 uppercase">Identité cible</span>
+                            <span className="text-xs font-medium text-indigo-600 uppercase">Identitï¿½ cible</span>
                             <p className="text-gray-900 font-medium mt-1">{identity.who_you_want_to_be}</p>
                             {identity.core_values.length > 0 && (
                                 <div className="flex flex-wrap gap-1 mt-2">
@@ -69,7 +69,7 @@ export const SystemsOverview: React.FC<SystemsOverviewProps> = ({
             {/* System Health Score */}
             <div className="p-4 border-b border-gray-200">
                 <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-gray-700">Santé du système</span>
+                    <span className="text-sm font-medium text-gray-700">Santï¿½ du systï¿½me</span>
                     <span className={cn(
                         'text-sm font-bold',
                         systemHealth >= 80 ? 'text-green-600' :
@@ -97,7 +97,8 @@ export const SystemsOverview: React.FC<SystemsOverviewProps> = ({
 
             {/* Routines Overview */}
             <div className="p-4 space-y-4">
-                <h4 className="text-sm font-medium text-gray-700">Routines</h4>
+                <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">Routines</h4>
+                <div className="space-y-3 stagger-animation">
 
                 {/* Morning Routine */}
                 <RoutineSection
@@ -117,11 +118,12 @@ export const SystemsOverview: React.FC<SystemsOverviewProps> = ({
 
                 {/* Anytime Habits */}
                 <RoutineSection
-                    title="À tout moment"
-                    icon="ð"
+                    title="ï¿½ tout moment"
+                    icon="ï¿½"
                     habits={habitsByRoutine.anytime}
                     color="blue"
                 />
+                </div>
             </div>
 
             {/* Stats Summary */}
@@ -133,13 +135,13 @@ export const SystemsOverview: React.FC<SystemsOverviewProps> = ({
                     </div>
                     <div>
                         <div className="text-2xl font-bold text-gray-900">{completionRate}%</div>
-                        <div className="text-xs text-gray-500">Complétion</div>
+                        <div className="text-xs text-gray-500">Complï¿½tion</div>
                     </div>
                     <div>
                         <div className="text-2xl font-bold text-gray-900">
                             {habits.reduce((sum, h) => sum + h.current_streak, 0)}
                         </div>
-                        <div className="text-xs text-gray-500">Séries totales</div>
+                        <div className="text-xs text-gray-500">Sï¿½ries totales</div>
                     </div>
                 </div>
             </div>
@@ -180,23 +182,23 @@ const RoutineSection: React.FC<RoutineSectionProps> = ({
     }
 
     return (
-        <div className={cn('p-3 rounded-lg border', colorClasses[color])}>
+        <div className={cn('p-3 rounded-lg border hover-scale', colorClasses[color])}>
             <div className="flex items-center gap-2 mb-2">
                 <span>{icon}</span>
-                <span className="text-sm font-medium text-gray-700">{title}</span>
-                <span className="text-xs text-gray-500 ml-auto">{habits.length} habitude(s)</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{title}</span>
+                <span className="text-xs text-gray-500 dark:text-gray-400 ml-auto">{habits.length} habitude(s)</span>
             </div>
             <div className="space-y-1">
                 {habits.map((habit) => (
                     <div key={habit.id} className="flex items-center gap-2 text-sm">
                         <div className={cn(
                             'w-2 h-2 rounded-full',
-                            habit.current_streak > 0 ? 'bg-green-500' : 'bg-gray-300'
+                            habit.current_streak > 0 ? 'bg-green-500' : 'bg-gray-300 dark:bg-gray-600'
                         )} />
-                        <span className="text-gray-600 truncate">{habit.name}</span>
+                        <span className="text-gray-600 dark:text-gray-300 truncate">{habit.name}</span>
                         {habit.current_streak > 0 && (
                             <span className="text-xs text-orange-500 ml-auto">
-                                =% {habit.current_streak}
+                                ðŸ”¥ {habit.current_streak}
                             </span>
                         )}
                     </div>
@@ -233,10 +235,10 @@ function calculateSystemHealth(habits: Habit[], completionRate: number): number 
 }
 
 function getHealthMessage(score: number): string {
-    if (score >= 80) return 'Excellent ! Votre système est solide et bien établi.';
-    if (score >= 60) return 'Bon travail ! Continuez à renforcer vos habitudes.';
+    if (score >= 80) return 'Excellent ! Votre systï¿½me est solide et bien ï¿½tabli.';
+    if (score >= 60) return 'Bon travail ! Continuez ï¿½ renforcer vos habitudes.';
     if (score >= 40) return 'En progression. Focalisez-vous sur la constance.';
-    return 'Début du parcours. Commencez petit et soyez régulier.';
+    return 'Dï¿½but du parcours. Commencez petit et soyez rï¿½gulier.';
 }
 
 export default SystemsOverview;

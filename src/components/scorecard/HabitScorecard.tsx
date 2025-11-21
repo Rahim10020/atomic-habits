@@ -71,12 +71,12 @@ export const HabitScorecard: React.FC<HabitScorecardProps> = ({
     };
 
     return (
-        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden animate-fade-in">
             {/* Header */}
             <div className="p-4 bg-gray-50 border-b border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-900">Carte de pointage des habitudes</h3>
                 <p className="text-sm text-gray-500 mt-1">
-                    Notez vos habitudes actuelles comme positives, négatives ou neutres
+                    Notez vos habitudes actuelles comme positives, nï¿½gatives ou neutres
                 </p>
             </div>
 
@@ -112,7 +112,7 @@ export const HabitScorecard: React.FC<HabitScorecardProps> = ({
                             onClick={() => handleAddItem('negative')}
                             disabled={!newHabit.trim() || isAdding}
                             className="px-3 py-2 bg-red-100 text-red-700 rounded-md hover:bg-red-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                            title="Négative"
+                            title="Nï¿½gative"
                         >
                             -
                         </button>
@@ -125,18 +125,18 @@ export const HabitScorecard: React.FC<HabitScorecardProps> = ({
                 <div className="p-8 text-center text-gray-500">Chargement...</div>
             ) : items.length === 0 ? (
                 <div className="p-8 text-center text-gray-500">
-                    Aucune habitude enregistrée. Commencez par ajouter vos habitudes quotidiennes.
+                    Aucune habitude enregistrï¿½e. Commencez par ajouter vos habitudes quotidiennes.
                 </div>
             ) : (
                 <div className="divide-y divide-gray-200">
                     {/* Positive habits */}
                     {groupedItems.positive.length > 0 && (
                         <div className="p-4">
-                            <h4 className="text-sm font-medium text-green-700 mb-2 flex items-center gap-2">
-                                <span className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">+</span>
+                            <h4 className="text-sm font-medium text-green-700 dark:text-green-400 mb-2 flex items-center gap-2">
+                                <span className="w-5 h-5 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center text-xs">+</span>
                                 Habitudes positives ({groupedItems.positive.length})
                             </h4>
-                            <div className="space-y-2">
+                            <div className="space-y-2 stagger-animation">
                                 {groupedItems.positive.map((item) => (
                                     <ScorecardItemRow
                                         key={item.id}
@@ -152,11 +152,11 @@ export const HabitScorecard: React.FC<HabitScorecardProps> = ({
                     {/* Neutral habits */}
                     {groupedItems.neutral.length > 0 && (
                         <div className="p-4">
-                            <h4 className="text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-                                <span className="w-5 h-5 bg-gray-100 rounded-full flex items-center justify-center text-xs">=</span>
+                            <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-2">
+                                <span className="w-5 h-5 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-xs">=</span>
                                 Habitudes neutres ({groupedItems.neutral.length})
                             </h4>
-                            <div className="space-y-2">
+                            <div className="space-y-2 stagger-animation">
                                 {groupedItems.neutral.map((item) => (
                                     <ScorecardItemRow
                                         key={item.id}
@@ -172,11 +172,11 @@ export const HabitScorecard: React.FC<HabitScorecardProps> = ({
                     {/* Negative habits */}
                     {groupedItems.negative.length > 0 && (
                         <div className="p-4">
-                            <h4 className="text-sm font-medium text-red-700 mb-2 flex items-center gap-2">
-                                <span className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center text-xs">-</span>
-                                Habitudes négatives ({groupedItems.negative.length})
+                            <h4 className="text-sm font-medium text-red-700 dark:text-red-400 mb-2 flex items-center gap-2">
+                                <span className="w-5 h-5 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center text-xs">-</span>
+                                Habitudes negatives ({groupedItems.negative.length})
                             </h4>
-                            <div className="space-y-2">
+                            <div className="space-y-2 stagger-animation">
                                 {groupedItems.negative.map((item) => (
                                     <ScorecardItemRow
                                         key={item.id}
@@ -221,8 +221,8 @@ const ScorecardItemRow: React.FC<ScorecardItemRowProps> = ({
     onDelete,
 }) => {
     return (
-        <div className="flex items-center gap-2 p-2 bg-white rounded border border-gray-100 hover:bg-gray-50 transition-colors">
-            <span className="flex-1 text-sm text-gray-700">{item.habit_name}</span>
+        <div className="flex items-center gap-2 p-2 bg-white dark:bg-gray-700 rounded border border-gray-100 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors hover-scale">
+            <span className="flex-1 text-sm text-gray-700 dark:text-gray-200">{item.habit_name}</span>
 
             {/* Rating buttons */}
             <div className="flex gap-1">
