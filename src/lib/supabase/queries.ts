@@ -25,8 +25,9 @@ export const createIdentity = async (userId: string, formData: IdentityFormData)
         .from('identities')
         .insert({
             user_id: userId,
-            ...formData,
-        } as any)
+            who_you_want_to_be: formData.who_you_want_to_be,
+            core_values: formData.core_values,
+        })
         .select()
         .single();
 
@@ -226,7 +227,7 @@ export const toggleHabitLog = async (
                 habit_id: habitId,
                 log_date: date,
                 completed,
-            } as any)
+            })
             .select()
             .single();
 
