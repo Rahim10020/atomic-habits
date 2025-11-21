@@ -48,7 +48,7 @@ export const HabitForm: React.FC<HabitFormProps> = ({
     const [loading, setLoading] = useState(false);
     const [frictionInput, setFrictionInput] = useState('');
 
-    const updateField = (field: keyof HabitFormData, value: any) => {
+    const updateField = <K extends keyof HabitFormData>(field: K, value: HabitFormData[K]) => {
         setFormData(prev => ({ ...prev, [field]: value }));
     };
 

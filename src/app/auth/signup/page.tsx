@@ -42,8 +42,9 @@ export default function SignupPage() {
             setTimeout(() => {
                 router.push('/onboarding');
             }, 2000);
-        } catch (err: any) {
-            setError(err.message || 'Erreur lors de l\'inscription');
+        } catch (err) {
+            const message = err instanceof Error ? err.message : 'Erreur lors de l\'inscription';
+            setError(message);
         } finally {
             setLoading(false);
         }

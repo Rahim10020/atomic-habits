@@ -25,8 +25,9 @@ export default function LoginPage() {
         try {
             await signIn(email, password);
             router.push('/dashboard');
-        } catch (err: any) {
-            setError(err.message || 'Erreur lors de la connexion');
+        } catch (err) {
+            const message = err instanceof Error ? err.message : 'Erreur lors de la connexion';
+            setError(message);
         } finally {
             setLoading(false);
         }

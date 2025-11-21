@@ -54,8 +54,9 @@ export default function OnboardingPage() {
             setTimeout(() => {
                 router.push('/habit-scorecard');
             }, 2000);
-        } catch (err: any) {
-            setError(err.message || 'Erreur lors de la sauvegarde');
+        } catch (err) {
+            const message = err instanceof Error ? err.message : 'Erreur lors de la sauvegarde';
+            setError(message);
             setLoading(false);
         }
     };
