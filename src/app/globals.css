@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -113,6 +111,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -122,6 +121,7 @@
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -132,6 +132,7 @@
     transform: translateY(20px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -143,6 +144,7 @@
     transform: translateY(-20px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -154,6 +156,7 @@
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -165,6 +168,7 @@
     transform: translateX(-100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -176,12 +180,15 @@
     transform: scale(0.3);
     opacity: 0;
   }
+
   50% {
     transform: scale(1.05);
   }
+
   70% {
     transform: scale(0.9);
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -193,6 +200,7 @@
     transform: scale(0.95);
     opacity: 0;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -200,9 +208,12 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
@@ -212,6 +223,7 @@
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -221,6 +233,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -230,6 +243,7 @@
   0% {
     stroke-dashoffset: 50;
   }
+
   100% {
     stroke-dashoffset: 0;
   }
@@ -289,21 +303,50 @@
 }
 
 /* Staggered animations */
-.stagger-animation > * {
+.stagger-animation>* {
   opacity: 0;
   animation: slideUp 0.4s ease-out forwards;
 }
 
-.stagger-animation > *:nth-child(1) { animation-delay: 0ms; }
-.stagger-animation > *:nth-child(2) { animation-delay: 50ms; }
-.stagger-animation > *:nth-child(3) { animation-delay: 100ms; }
-.stagger-animation > *:nth-child(4) { animation-delay: 150ms; }
-.stagger-animation > *:nth-child(5) { animation-delay: 200ms; }
-.stagger-animation > *:nth-child(6) { animation-delay: 250ms; }
-.stagger-animation > *:nth-child(7) { animation-delay: 300ms; }
-.stagger-animation > *:nth-child(8) { animation-delay: 350ms; }
-.stagger-animation > *:nth-child(9) { animation-delay: 400ms; }
-.stagger-animation > *:nth-child(10) { animation-delay: 450ms; }
+.stagger-animation>*:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.stagger-animation>*:nth-child(2) {
+  animation-delay: 50ms;
+}
+
+.stagger-animation>*:nth-child(3) {
+  animation-delay: 100ms;
+}
+
+.stagger-animation>*:nth-child(4) {
+  animation-delay: 150ms;
+}
+
+.stagger-animation>*:nth-child(5) {
+  animation-delay: 200ms;
+}
+
+.stagger-animation>*:nth-child(6) {
+  animation-delay: 250ms;
+}
+
+.stagger-animation>*:nth-child(7) {
+  animation-delay: 300ms;
+}
+
+.stagger-animation>*:nth-child(8) {
+  animation-delay: 350ms;
+}
+
+.stagger-animation>*:nth-child(9) {
+  animation-delay: 400ms;
+}
+
+.stagger-animation>*:nth-child(10) {
+  animation-delay: 450ms;
+}
 
 /* Transition utilities */
 .transition-theme {
