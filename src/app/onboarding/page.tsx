@@ -62,16 +62,16 @@ export default function OnboardingPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-primary-50 to-white py-12 px-4">
-            <div className="max-w-3xl mx-auto">
-                <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
+        <div className="min-h-screen bg-background py-12 px-4">
+            <div className="max-w-xl mx-auto">
+                <div className="bg-card rounded-lg border border-border p-6">
                     {/* Header */}
-                    <div className="text-center mb-8">
-                        <h1 className="text-2xl font-bold text-gray-900 mb-2">
-                            Bienvenue dans Atomic Habits 🎉
+                    <div className="text-center mb-6">
+                        <h1 className="text-xl font-semibold text-foreground mb-1">
+                            Bienvenue
                         </h1>
-                        <p className="text-gray-600">
-                            Commençons par définir votre identité et vos valeurs
+                        <p className="text-sm text-muted-foreground">
+                            Définissons votre identité et vos valeurs
                         </p>
                     </div>
 
@@ -84,7 +84,7 @@ export default function OnboardingPage() {
 
                     {/* Error message */}
                     {error && (
-                        <div className="mb-6 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
+                        <div className="mb-4 bg-error/10 border border-error/20 text-error px-3 py-2 rounded text-sm">
                             {error}
                         </div>
                     )}
@@ -108,10 +108,10 @@ export default function OnboardingPage() {
                     )}
 
                     {currentStep === 3 && (
-                        <div className="text-center py-12 animate-fade-in">
-                            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="text-center py-8 animate-fade-in">
+                            <div className="w-12 h-12 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <svg
-                                    className="w-10 h-10 text-green-600"
+                                    className="w-6 h-6 text-success"
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
@@ -124,14 +124,14 @@ export default function OnboardingPage() {
                                     />
                                 </svg>
                             </div>
-                            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                                Excellent travail ! 🎊
+                            <h2 className="text-lg font-semibold text-foreground mb-2">
+                                Configuration terminée
                             </h2>
-                            <p className="text-lg text-gray-600 mb-2">
-                                Votre identité : <strong>{identity}</strong>
+                            <p className="text-sm text-muted-foreground mb-1">
+                                Votre identité : <strong className="text-foreground">{identity}</strong>
                             </p>
-                            <p className="text-gray-600">
-                                Maintenant, évaluons vos habitudes actuelles...
+                            <p className="text-sm text-muted-foreground">
+                                Évaluons vos habitudes actuelles...
                             </p>
                         </div>
                     )}

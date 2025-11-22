@@ -52,12 +52,12 @@ export default function SignupPage() {
 
     if (success) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-white px-4">
-                <div className="max-w-md w-full text-center">
-                    <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
-                        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="min-h-screen flex items-center justify-center bg-background px-4">
+                <div className="max-w-sm w-full text-center">
+                    <div className="bg-card rounded-lg border border-border p-6">
+                        <div className="w-12 h-12 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg
-                                className="w-8 h-8 text-green-600"
+                                className="w-6 h-6 text-success"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -70,11 +70,11 @@ export default function SignupPage() {
                                 />
                             </svg>
                         </div>
-                        <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                            Compte créé avec succès ! 🎉
+                        <h2 className="text-lg font-semibold text-foreground mb-2">
+                            Compte créé
                         </h2>
-                        <p className="text-gray-600">
-                            Redirection vers l'onboarding...
+                        <p className="text-muted-foreground text-sm">
+                            Redirection vers l&apos;onboarding...
                         </p>
                     </div>
                 </div>
@@ -83,19 +83,19 @@ export default function SignupPage() {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-white px-4">
-            <div className="max-w-md w-full">
+        <div className="min-h-screen flex items-center justify-center bg-background px-4">
+            <div className="max-w-sm w-full">
                 <div className="text-center mb-8">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-2">
-                        Commencez aujourd'hui 🚀
+                    <h1 className="text-2xl font-semibold text-foreground mb-2">
+                        Créer un compte
                     </h1>
-                    <p className="text-gray-600">
-                        Créez votre compte et transformez vos habitudes
+                    <p className="text-muted-foreground text-sm">
+                        Commencez à transformer vos habitudes
                     </p>
                 </div>
 
-                <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="bg-card rounded-lg border border-border p-6">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                         <Input
                             label="Email"
                             type="email"
@@ -125,7 +125,7 @@ export default function SignupPage() {
                         />
 
                         {error && (
-                            <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
+                            <div className="bg-error/10 border border-error/20 text-error px-3 py-2 rounded text-sm">
                                 {error}
                             </div>
                         )}
@@ -133,19 +133,18 @@ export default function SignupPage() {
                         <Button
                             type="submit"
                             fullWidth
-                            size="lg"
                             disabled={loading}
                         >
-                            {loading ? 'Création du compte...' : 'Créer mon compte'}
+                            {loading ? 'Création...' : 'Créer mon compte'}
                         </Button>
                     </form>
 
-                    <div className="mt-6 text-center">
-                        <p className="text-gray-600">
+                    <div className="mt-4 text-center">
+                        <p className="text-muted-foreground text-sm">
                             Déjà un compte ?{' '}
                             <Link
                                 href="/auth/login"
-                                className="text-primary font-medium hover:underline"
+                                className="text-foreground font-medium hover:underline"
                             >
                                 Se connecter
                             </Link>

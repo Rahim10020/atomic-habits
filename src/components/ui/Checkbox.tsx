@@ -28,7 +28,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         setIsAnimating(true);
         onChange(!checked);
 
-        setTimeout(() => setIsAnimating(false), 500);
+        setTimeout(() => setIsAnimating(false), 300);
     };
 
     return (
@@ -49,18 +49,18 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                 />
                 <div
                     className={cn(
-                        'w-6 h-6 rounded-md border-2 transition-all duration-200',
+                        'w-5 h-5 rounded border transition-all duration-150',
                         'flex items-center justify-center',
                         checked
-                            ? 'bg-primary border-primary'
-                            : 'bg-white border-gray-300 hover:border-gray-400',
+                            ? 'bg-foreground border-foreground'
+                            : 'bg-background border-border hover:border-gray-400',
                         isAnimating && 'animate-bounce-in',
                         disabled && 'cursor-not-allowed'
                     )}
                 >
                     {checked && (
                         <svg
-                            className="w-4 h-4 text-white"
+                            className="w-3 h-3 text-background"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -76,7 +76,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                 </div>
             </div>
             {label && (
-                <span className="ml-2 text-sm text-gray-700">{label}</span>
+                <span className="ml-2 text-sm text-foreground">{label}</span>
             )}
         </label>
     );

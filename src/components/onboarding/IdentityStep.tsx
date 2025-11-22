@@ -34,36 +34,35 @@ export const IdentityStep: React.FC<IdentityStepProps> = ({
 
     return (
         <div className="animate-fade-in">
-            <div className="mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                    Qui voulez-vous devenir ? 🎯
+            <div className="mb-6">
+                <h2 className="text-lg font-semibold text-foreground mb-2">
+                    Qui voulez-vous devenir ?
                 </h2>
-                <p className="text-lg text-gray-600">
-                    Selon Atomic Habits, la manière la plus efficace de changer vos habitudes
-                    est de changer votre identité. Commençons par définir qui vous voulez devenir.
+                <p className="text-sm text-muted-foreground">
+                    Définissez l&apos;identité que vous voulez construire.
                 </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
                 <Textarea
                     label="Votre identité cible"
                     value={identity}
                     onChange={(e) => setIdentity(e.target.value)}
                     placeholder="Je suis une personne qui..."
-                    rows={4}
-                    helperText="Décrivez qui vous voulez devenir, pas ce que vous voulez accomplir"
+                    rows={3}
+                    helperText="Décrivez qui vous voulez devenir"
                 />
 
                 <div>
-                    <p className="text-sm font-medium text-gray-700 mb-3">
-                        💡 Suggestions d'identité
+                    <p className="text-xs font-medium text-muted-foreground mb-2">
+                        Suggestions
                     </p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5">
                         {suggestions.map((suggestion, index) => (
                             <button
                                 key={index}
                                 onClick={() => handleSuggestionClick(suggestion)}
-                                className="px-4 py-2 bg-gray-100 hover:bg-primary-50 text-gray-700 hover:text-primary rounded-lg text-sm transition-colors duration-200 border border-gray-200 hover:border-primary"
+                                className="px-2.5 py-1 bg-secondary text-foreground rounded text-xs transition-colors duration-150 border border-border hover:bg-gray-200"
                             >
                                 {suggestion}
                             </button>
@@ -71,23 +70,21 @@ export const IdentityStep: React.FC<IdentityStepProps> = ({
                     </div>
                 </div>
 
-                <div className="bg-primary-50 border border-primary-200 rounded-lg p-4">
-                    <p className="text-sm text-primary-900">
-                        <strong>💡 Conseil :</strong> Ne dites pas "Je veux perdre du poids",
-                        mais "Je suis une personne en bonne santé". Ne dites pas "Je veux écrire un livre",
-                        mais "Je suis un écrivain".
+                <div className="bg-secondary border border-border rounded p-3">
+                    <p className="text-xs text-muted-foreground">
+                        <strong className="text-foreground">Conseil :</strong> Ne dites pas &quot;Je veux perdre du poids&quot;,
+                        mais &quot;Je suis une personne en bonne santé&quot;.
                     </p>
                 </div>
 
-                <div className="flex justify-end pt-4">
+                <div className="flex justify-end pt-2">
                     <Button
                         onClick={onNext}
                         disabled={!canProceed}
-                        size="lg"
                     >
                         Continuer
                         <svg
-                            className="w-5 h-5 ml-2"
+                            className="w-4 h-4 ml-1.5"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"

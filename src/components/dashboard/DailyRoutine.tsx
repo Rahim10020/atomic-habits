@@ -22,7 +22,6 @@ export const DailyRoutine: React.FC<DailyRoutineProps> = ({
 }) => {
     const renderRoutineSection = (
         title: string,
-        icon: string,
         habits: DailyHabitStatus[]
     ) => {
         if (habits.length === 0) return null;
@@ -33,23 +32,22 @@ export const DailyRoutine: React.FC<DailyRoutineProps> = ({
             : 0;
 
         return (
-            <Card className="hover:shadow-lg transition-shadow duration-200">
+            <Card hover>
                 <CardHeader>
                     <div className="flex items-center justify-between">
-                        <CardTitle className="flex items-center gap-2">
-                            <span className="text-2xl">{icon}</span>
+                        <CardTitle>
                             {title}
                         </CardTitle>
-                        <div className="text-sm text-gray-500">
-                            {completedCount}/{habits.length} complétées
-                            <span className="ml-2 font-semibold text-primary">
+                        <div className="text-sm text-muted-foreground">
+                            {completedCount}/{habits.length}
+                            <span className="ml-2 font-medium text-foreground">
                                 {percentage}%
                             </span>
                         </div>
                     </div>
                 </CardHeader>
                 <CardContent>
-                    <div className="space-y-3">
+                    <div className="space-y-2">
                         {habits.map((habitStatus) => (
                             <HabitTracker
                                 key={habitStatus.habit.id}
@@ -64,28 +62,32 @@ export const DailyRoutine: React.FC<DailyRoutineProps> = ({
     };
 
     return (
-        <div className="space-y-6">
-            {renderRoutineSection('Routine du matin', '🌅', morningHabits)}
-            {renderRoutineSection('Routine du soir', '🌙', eveningHabits)}
-            {renderRoutineSection('À tout moment', '⏰', anytimeHabits)}
+        <div className="space-y-4">
+            {renderRoutineSection('Routine du matin', morningHabits)}
+            {renderRoutineSection('Routine du soir', eveningHabits)}
+            {renderRoutineSection('À tout moment', anytimeHabits)}
 
             {morningHabits.length === 0 &&
                 eveningHabits.length === 0 &&
                 anytimeHabits.length === 0 && (
-                    <Card className="text-center py-12">
-                        <div className="text-6xl mb-4">🎯</div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                            Aucune habitude pour aujourd'hui
+                    <Card className="text-center py-10">
+                        <div className="mb-4">
+                            <svg className="w-12 h-12 mx-auto text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                        </div>
+                        <h3 className="text-base font-semibold text-foreground mb-1">
+                            Aucune habitude pour aujourd&apos;hui
                         </h3>
-                        <p className="text-gray-600 mb-6">
-                            Créez votre première habitude pour commencer votre transformation !
+                        <p className="text-sm text-muted-foreground mb-4">
+                            Créez votre première habitude pour commencer
                         </p>
                         <a
                             href="/habits/new"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-600 transition-colors"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-foreground text-background rounded-md text-sm font-medium hover:bg-gray-700 transition-colors"
                         >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4v16m8-8H4" />
                             </svg>
                             Créer une habitude
                         </a>

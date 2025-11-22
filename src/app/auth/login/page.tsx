@@ -34,19 +34,19 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-white px-4">
-            <div className="max-w-md w-full">
+        <div className="min-h-screen flex items-center justify-center bg-background px-4">
+            <div className="max-w-sm w-full">
                 <div className="text-center mb-8">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-2">
-                        Bon retour ! 👋
+                    <h1 className="text-2xl font-semibold text-foreground mb-2">
+                        Connexion
                     </h1>
-                    <p className="text-gray-600">
-                        Connectez-vous pour continuer votre progression
+                    <p className="text-muted-foreground text-sm">
+                        Connectez-vous pour continuer
                     </p>
                 </div>
 
-                <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="bg-card rounded-lg border border-border p-6">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                         <Input
                             label="Email"
                             type="email"
@@ -66,7 +66,7 @@ export default function LoginPage() {
                         />
 
                         {error && (
-                            <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
+                            <div className="bg-error/10 border border-error/20 text-error px-3 py-2 rounded text-sm">
                                 {error}
                             </div>
                         )}
@@ -74,21 +74,20 @@ export default function LoginPage() {
                         <Button
                             type="submit"
                             fullWidth
-                            size="lg"
                             disabled={loading}
                         >
                             {loading ? 'Connexion...' : 'Se connecter'}
                         </Button>
                     </form>
 
-                    <div className="mt-6 text-center">
-                        <p className="text-gray-600">
+                    <div className="mt-4 text-center">
+                        <p className="text-muted-foreground text-sm">
                             Pas encore de compte ?{' '}
                             <Link
                                 href="/auth/signup"
-                                className="text-primary font-medium hover:underline"
+                                className="text-foreground font-medium hover:underline"
                             >
-                                S'inscrire
+                                S&apos;inscrire
                             </Link>
                         </p>
                     </div>

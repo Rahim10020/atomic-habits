@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -88,8 +87,8 @@ export default function DashboardPage() {
         return (
             <div className="flex items-center justify-center min-h-screen">
                 <div className="text-center">
-                    <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-                    <p className="mt-4 text-gray-600">Chargement de votre dashboard...</p>
+                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-2 border-foreground border-t-transparent"></div>
+                    <p className="mt-3 text-sm text-muted-foreground">Chargement...</p>
                 </div>
             </div>
         );
@@ -105,28 +104,28 @@ export default function DashboardPage() {
         : 0;
 
     return (
-        <div className="container-custom py-8">
+        <div className="container-custom py-6">
             {/* Header */}
-            <div className="mb-8">
+            <div className="mb-6">
                 <div className="flex items-center justify-between mb-4">
                     <div>
-                        <h1 className="text-4xl font-bold text-gray-900 mb-2">
-                            Bonjour ! 👋
+                        <h1 className="text-2xl font-semibold text-foreground mb-1">
+                            Dashboard
                         </h1>
                         {identity && (
-                            <p className="text-lg text-gray-600">
-                                <strong className="text-primary">{identity.who_you_want_to_be}</strong>
+                            <p className="text-sm text-muted-foreground">
+                                {identity.who_you_want_to_be}
                             </p>
                         )}
                     </div>
                     <div className="text-right">
-                        <p className="text-sm text-gray-500">
+                        <p className="text-xs text-muted-foreground">
                             {formatDateForDisplay(new Date(), 'long')}
                         </p>
-                        <p className="text-3xl font-bold text-primary mt-1">
+                        <p className="text-2xl font-semibold text-foreground mt-1">
                             {completionRate}%
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-xs text-muted-foreground">
                             {totalCompleted}/{totalForToday} habitudes
                         </p>
                     </div>
@@ -134,20 +133,19 @@ export default function DashboardPage() {
 
                 {/* Welcome message on first visit */}
                 {habits.length === 0 && (
-                    <div className="bg-primary-50 border border-primary-200 rounded-lg p-6 mb-6">
-                        <h2 className="text-xl font-semibold text-primary-900 mb-2">
-                            🎉 Bienvenue sur votre Dashboard !
+                    <div className="bg-secondary border border-border rounded-lg p-4 mb-4">
+                        <h2 className="text-sm font-semibold text-foreground mb-1">
+                            Bienvenue sur votre Dashboard
                         </h2>
-                        <p className="text-primary-800 mb-4">
-                            Voici votre espace personnel pour suivre et construire vos habitudes.
-                            Commencez par créer votre première habitude en utilisant les 4 lois d'Atomic Habits.
+                        <p className="text-sm text-muted-foreground mb-3">
+                            Commencez par créer votre première habitude.
                         </p>
                         <a
                             href="/habits/new"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-600 transition-colors font-medium"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-foreground text-background rounded-md text-sm font-medium hover:bg-gray-700 transition-colors"
                         >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4v16m8-8H4" />
                             </svg>
                             Créer ma première habitude
                         </a>
@@ -157,15 +155,15 @@ export default function DashboardPage() {
 
             {/* Streaks display */}
             {habits.length > 0 && (
-                <div className="mb-8">
+                <div className="mb-6">
                     <StreakDisplay habits={habits} />
                 </div>
             )}
 
             {/* Daily routines */}
             <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                    📅 Vos systèmes du jour
+                <h2 className="text-lg font-semibold text-foreground mb-4">
+                    Vos habitudes du jour
                 </h2>
                 <DailyRoutine
                     morningHabits={morning}
@@ -177,15 +175,14 @@ export default function DashboardPage() {
 
             {/* Quick tips */}
             {habits.length > 0 && completionRate < 100 && (
-                <div className="mt-8 bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-                    <h3 className="text-lg font-semibold text-yellow-900 mb-2 flex items-center gap-2">
-                        <span>💡</span>
-                        Conseil du jour
+                <div className="mt-6 bg-secondary border border-border rounded-lg p-4">
+                    <h3 className="text-sm font-semibold text-foreground mb-1">
+                        Conseil
                     </h3>
-                    <p className="text-yellow-800">
-                        {completionRate === 0 && "Commencez par la version 2 minutes de vos habitudes. C'est plus facile de maintenir une habitude quand on commence petit !"}
-                        {completionRate > 0 && completionRate < 50 && "Excellent début ! Continuez, chaque petite victoire compte. Ne brisez pas la chaîne ! 🔥"}
-                        {completionRate >= 50 && completionRate < 100 && "Vous êtes sur la bonne voie ! Finissez fort aujourd'hui pour renforcer vos habitudes. 💪"}
+                    <p className="text-sm text-muted-foreground">
+                        {completionRate === 0 && "Commencez par la version 2 minutes de vos habitudes."}
+                        {completionRate > 0 && completionRate < 50 && "Continuez, chaque petite victoire compte."}
+                        {completionRate >= 50 && completionRate < 100 && "Vous êtes sur la bonne voie !"}
                     </p>
                 </div>
             )}

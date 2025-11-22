@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, ReactNode } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils/cn';
 
 interface ModalProps {
     isOpen: boolean;
@@ -79,7 +79,7 @@ export const Modal: React.FC<ModalProps> = ({
 
     return (
         <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-foreground/20 backdrop-blur-sm"
             onClick={handleOverlayClick}
             role="dialog"
             aria-modal="true"
@@ -88,9 +88,9 @@ export const Modal: React.FC<ModalProps> = ({
             <div
                 ref={modalRef}
                 className={cn(
-                    'relative w-full bg-white rounded-lg shadow-xl',
-                    'transform transition-all duration-200',
-                    'animate-in fade-in-0 zoom-in-95',
+                    'relative w-full bg-card rounded-lg border border-border shadow-md',
+                    'transform transition-all duration-150',
+                    'animate-scale-in',
                     sizeClasses[size],
                     className
                 )}
@@ -98,20 +98,20 @@ export const Modal: React.FC<ModalProps> = ({
             >
                 {/* Header */}
                 {(title || showCloseButton) && (
-                    <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                    <div className="flex items-center justify-between p-4 border-b border-border">
                         {title && (
-                            <h2 id="modal-title" className="text-lg font-semibold text-gray-900">
+                            <h2 id="modal-title" className="text-base font-semibold text-foreground">
                                 {title}
                             </h2>
                         )}
                         {showCloseButton && (
                             <button
                                 onClick={onClose}
-                                className="p-1 text-gray-400 hover:text-gray-600 transition-colors rounded-full hover:bg-gray-100"
+                                className="p-1 text-muted-foreground hover:text-foreground transition-colors rounded"
                                 aria-label="Fermer"
                             >
                                 <svg
-                                    className="w-5 h-5"
+                                    className="w-4 h-4"
                                     fill="none"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
@@ -158,20 +158,20 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
     loading = false,
 }) => {
     const variantClasses = {
-        danger: 'bg-red-600 hover:bg-red-700 focus:ring-red-500',
-        warning: 'bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-500',
-        info: 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500',
+        danger: 'bg-error hover:bg-error/90 focus-visible:ring-error',
+        warning: 'bg-warning hover:bg-warning/90 focus-visible:ring-warning',
+        info: 'bg-foreground hover:bg-gray-700 focus-visible:ring-foreground',
     };
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} title={title} size="sm">
             <div className="space-y-4">
-                <p className="text-gray-600">{message}</p>
-                <div className="flex justify-end gap-3">
+                <p className="text-sm text-muted-foreground">{message}</p>
+                <div className="flex justify-end gap-2">
                     <button
                         onClick={onClose}
                         disabled={loading}
-                        className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 disabled:opacity-50"
+                        className="px-3 py-1.5 text-sm font-medium text-foreground bg-secondary rounded-md hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-300 disabled:opacity-50 transition-colors"
                     >
                         {cancelText}
                     </button>
@@ -179,7 +179,7 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
                         onClick={onConfirm}
                         disabled={loading}
                         className={cn(
-                            'px-4 py-2 text-sm font-medium text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50',
+                            'px-3 py-1.5 text-sm font-medium text-white rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 transition-colors',
                             variantClasses[variant]
                         )}
                     >

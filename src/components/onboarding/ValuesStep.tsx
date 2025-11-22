@@ -24,14 +24,12 @@ export const ValuesStep: React.FC<ValuesStepProps> = ({
     const suggestedValues = [
         'Santé',
         'Famille',
-        'Croissance personnelle',
+        'Croissance',
         'Créativité',
         'Discipline',
         'Authenticité',
         'Générosité',
         'Excellence',
-        'Simplicité',
-        'Courage',
     ];
 
     const handleAddValue = () => {
@@ -55,17 +53,16 @@ export const ValuesStep: React.FC<ValuesStepProps> = ({
 
     return (
         <div className="animate-fade-in">
-            <div className="mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                    Quelles sont vos valeurs ? 💎
+            <div className="mb-6">
+                <h2 className="text-lg font-semibold text-foreground mb-2">
+                    Quelles sont vos valeurs ?
                 </h2>
-                <p className="text-lg text-gray-600">
-                    Vos valeurs fondamentales guident vos actions. Identifiez 3 à 5 valeurs
-                    qui sont importantes pour vous et qui correspondent à l'identité que vous voulez construire.
+                <p className="text-sm text-muted-foreground">
+                    Identifiez 3 à 5 valeurs importantes pour vous.
                 </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
                 {/* Input for new value */}
                 <div className="flex gap-2">
                     <Input
@@ -74,31 +71,31 @@ export const ValuesStep: React.FC<ValuesStepProps> = ({
                         onChange={(e) => setNewValue(e.target.value)}
                         onKeyPress={(e) => e.key === 'Enter' && handleAddValue()}
                     />
-                    <Button onClick={handleAddValue} disabled={!newValue.trim()}>
+                    <Button onClick={handleAddValue} disabled={!newValue.trim()} variant="secondary">
                         Ajouter
                     </Button>
                 </div>
 
                 {/* Suggested values */}
                 <div>
-                    <p className="text-sm font-medium text-gray-700 mb-3">
-                        💡 Valeurs suggérées
+                    <p className="text-xs font-medium text-muted-foreground mb-2">
+                        Suggestions
                     </p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5">
                         {suggestedValues.map((value, index) => (
                             <button
                                 key={index}
                                 onClick={() => handleSuggestionClick(value)}
                                 disabled={values.includes(value)}
-                                className={`px-4 py-2 rounded-lg text-sm transition-colors duration-200 border ${values.includes(value)
-                                    ? 'bg-primary text-white border-primary cursor-default'
-                                    : 'bg-gray-100 hover:bg-primary-50 text-gray-700 hover:text-primary border-gray-200 hover:border-primary'
+                                className={`px-2.5 py-1 rounded text-xs transition-colors duration-150 border ${values.includes(value)
+                                    ? 'bg-foreground text-background border-foreground cursor-default'
+                                    : 'bg-secondary text-foreground border-border hover:bg-gray-200'
                                     }`}
                             >
                                 {value}
                                 {values.includes(value) && (
                                     <svg
-                                        className="w-4 h-4 inline-block ml-1"
+                                        className="w-3 h-3 inline-block ml-1"
                                         fill="none"
                                         stroke="currentColor"
                                         viewBox="0 0 24 24"
@@ -119,22 +116,22 @@ export const ValuesStep: React.FC<ValuesStepProps> = ({
                 {/* Selected values */}
                 {values.length > 0 && (
                     <div>
-                        <p className="text-sm font-medium text-gray-700 mb-3">
-                            ✨ Vos valeurs ({values.length})
+                        <p className="text-xs font-medium text-muted-foreground mb-2">
+                            Vos valeurs ({values.length})
                         </p>
-                        <div className="space-y-2">
+                        <div className="space-y-1.5">
                             {values.map((value, index) => (
                                 <div
                                     key={index}
-                                    className="flex items-center justify-between bg-primary-50 border border-primary-200 rounded-lg px-4 py-3"
+                                    className="flex items-center justify-between bg-secondary border border-border rounded px-3 py-2"
                                 >
-                                    <span className="text-gray-900 font-medium">{value}</span>
+                                    <span className="text-sm text-foreground">{value}</span>
                                     <button
                                         onClick={() => handleRemoveValue(index)}
-                                        className="text-red-500 hover:text-red-700 transition-colors"
+                                        className="text-muted-foreground hover:text-error transition-colors"
                                     >
                                         <svg
-                                            className="w-5 h-5"
+                                            className="w-4 h-4"
                                             fill="none"
                                             stroke="currentColor"
                                             viewBox="0 0 24 24"
@@ -153,17 +150,10 @@ export const ValuesStep: React.FC<ValuesStepProps> = ({
                     </div>
                 )}
 
-                <div className="bg-primary-50 border border-primary-200 rounded-lg p-4">
-                    <p className="text-sm text-primary-900">
-                        <strong>💡 Conseil :</strong> Choisissez des valeurs qui résonnent vraiment
-                        avec vous. Vos habitudes devraient renforcer ces valeurs au quotidien.
-                    </p>
-                </div>
-
-                <div className="flex justify-between pt-4">
-                    <Button onClick={onBack} variant="ghost" size="lg">
+                <div className="flex justify-between pt-2">
+                    <Button onClick={onBack} variant="ghost">
                         <svg
-                            className="w-5 h-5 mr-2"
+                            className="w-4 h-4 mr-1.5"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -177,10 +167,10 @@ export const ValuesStep: React.FC<ValuesStepProps> = ({
                         </svg>
                         Retour
                     </Button>
-                    <Button onClick={onNext} disabled={!canProceed} size="lg">
+                    <Button onClick={onNext} disabled={!canProceed}>
                         Continuer
                         <svg
-                            className="w-5 h-5 ml-2"
+                            className="w-4 h-4 ml-1.5"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
