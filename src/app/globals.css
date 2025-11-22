@@ -7,21 +7,21 @@
 --------------------------------*/
 :root {
   --background: #FFFFFF;
-  --foreground: #1F2937;
+  --foreground: #111827;
   --card: #FFFFFF;
-  --card-foreground: #1F2937;
+  --card-foreground: #111827;
   --primary: #111827;
   --primary-foreground: #FFFFFF;
   --secondary: #F3F4F6;
   --secondary-foreground: #374151;
   --muted: #F9FAFB;
-  --muted-foreground: #6B7280;
+  --muted-foreground: #4B5563;
   --border: #E5E7EB;
   --accent: #3B82F6;
   --accent-foreground: #FFFFFF;
-  --success: #059669;
-  --warning: #D97706;
-  --error: #DC2626;
+  --success: #047857;
+  --warning: #B45309;
+  --error: #B91C1C;
 }
 
 /* ------------------------------
