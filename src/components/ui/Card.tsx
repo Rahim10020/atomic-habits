@@ -19,16 +19,16 @@ export const Card: React.FC<CardProps> = ({
     const paddings = {
         none: '',
         sm: 'p-4',
-        md: 'p-6',
-        lg: 'p-8',
+        md: 'p-5',
+        lg: 'p-6',
     };
 
     return (
         <div
             className={cn(
-                'bg-white rounded-xl border border-gray-200 shadow-sm',
+                'bg-card rounded-lg border border-border',
                 paddings[padding],
-                hover && 'transition-shadow duration-200 hover:shadow-md',
+                hover && 'transition-shadow duration-150 hover:shadow-sm',
                 className
             )}
         >
@@ -57,7 +57,7 @@ interface CardTitleProps {
 
 export const CardTitle: React.FC<CardTitleProps> = ({ children, className }) => {
     return (
-        <h3 className={cn('text-xl font-semibold text-gray-900', className)}>
+        <h3 className={cn('text-base font-semibold text-foreground', className)}>
             {children}
         </h3>
     );
@@ -70,7 +70,7 @@ interface CardContentProps {
 
 export const CardContent: React.FC<CardContentProps> = ({ children, className }) => {
     return (
-        <div className={cn('text-gray-600', className)}>
+        <div className={cn('text-muted-foreground text-sm', className)}>
             {children}
         </div>
     );

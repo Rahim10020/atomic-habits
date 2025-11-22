@@ -17,11 +17,11 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     const progress = (currentStep / totalSteps) * 100;
 
     return (
-        <div className="mb-8">
+        <div className="mb-6">
             {/* Progress bar */}
-            <div className="relative h-2 bg-gray-200 rounded-full overflow-hidden mb-4">
+            <div className="relative h-1 bg-secondary rounded-full overflow-hidden mb-4">
                 <div
-                    className="absolute h-full bg-primary transition-all duration-500 ease-out rounded-full"
+                    className="absolute h-full bg-foreground transition-all duration-300 ease-out rounded-full"
                     style={{ width: `${progress}%` }}
                 />
             </div>
@@ -40,15 +40,15 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
                         >
                             <div
                                 className={cn(
-                                    'w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300',
-                                    isCompleted && 'bg-primary text-white',
-                                    isCurrent && 'bg-primary text-white ring-4 ring-primary-100',
-                                    !isCompleted && !isCurrent && 'bg-gray-200 text-gray-500'
+                                    'w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium transition-all duration-200',
+                                    isCompleted && 'bg-foreground text-background',
+                                    isCurrent && 'bg-foreground text-background',
+                                    !isCompleted && !isCurrent && 'bg-secondary text-muted-foreground'
                                 )}
                             >
                                 {isCompleted ? (
                                     <svg
-                                        className="w-5 h-5"
+                                        className="w-3 h-3"
                                         fill="none"
                                         stroke="currentColor"
                                         viewBox="0 0 24 24"
@@ -66,8 +66,8 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
                             </div>
                             <span
                                 className={cn(
-                                    'text-xs mt-2 text-center transition-colors duration-300',
-                                    (isCompleted || isCurrent) ? 'text-gray-900 font-medium' : 'text-gray-500'
+                                    'text-xs mt-1.5 text-center transition-colors duration-200',
+                                    (isCompleted || isCurrent) ? 'text-foreground font-medium' : 'text-muted-foreground'
                                 )}
                             >
                                 {step}

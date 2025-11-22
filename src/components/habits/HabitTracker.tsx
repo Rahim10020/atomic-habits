@@ -39,12 +39,12 @@ export const HabitTracker: React.FC<HabitTrackerProps> = ({
     return (
         <div
             className={cn(
-                'flex items-center gap-4 p-4 rounded-lg border-2 transition-all duration-200',
+                'flex items-center gap-3 p-3 rounded-md border transition-all duration-150',
                 isCompleted
-                    ? 'bg-green-50 border-green-200'
+                    ? 'bg-success/5 border-success/20'
                     : canComplete
-                        ? 'bg-white border-gray-200 hover:border-primary-200'
-                        : 'bg-gray-50 border-gray-200 opacity-60'
+                        ? 'bg-card border-border hover:border-gray-300'
+                        : 'bg-secondary border-border opacity-60'
             )}
         >
             <Checkbox
@@ -53,39 +53,39 @@ export const HabitTracker: React.FC<HabitTrackerProps> = ({
                 disabled={!canComplete || isToggling}
             />
 
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
                 <h4 className={cn(
-                    'font-medium text-gray-900',
-                    isCompleted && 'line-through text-gray-500'
+                    'text-sm font-medium text-foreground truncate',
+                    isCompleted && 'line-through text-muted-foreground'
                 )}>
                     {habit.name}
                 </h4>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-xs text-muted-foreground mt-0.5 truncate">
                     {habit.time_of_day} • {habit.location}
                 </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 flex-shrink-0">
                 {/* Streak indicator */}
                 {habit.current_streak > 0 && (
-                    <div className="flex items-center gap-1 px-3 py-1 bg-primary-50 rounded-full">
-                        <span className="text-lg">🔥</span>
-                        <span className="text-sm font-bold text-primary">
+                    <div className="flex items-center gap-1 px-2 py-0.5 bg-secondary rounded text-xs">
+                        <span className="font-medium text-foreground">
                             {habit.current_streak}
                         </span>
+                        <span className="text-muted-foreground">j</span>
                     </div>
                 )}
 
                 {/* Two minute version tooltip */}
                 <div className="group relative">
-                    <button className="text-gray-400 hover:text-primary transition-colors">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <button className="text-muted-foreground hover:text-foreground transition-colors p-0.5">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </button>
-                    <div className="absolute right-0 bottom-full mb-2 hidden group-hover:block w-64 p-3 bg-gray-900 text-white text-sm rounded-lg shadow-lg z-10">
-                        <strong>Version 2 minutes :</strong>
-                        <p className="mt-1">{habit.two_minute_version}</p>
+                    <div className="absolute right-0 bottom-full mb-1.5 hidden group-hover:block w-48 p-2 bg-foreground text-background text-xs rounded shadow-md z-10">
+                        <strong>Version 2 min :</strong>
+                        <p className="mt-0.5 opacity-90">{habit.two_minute_version}</p>
                     </div>
                 </div>
             </div>

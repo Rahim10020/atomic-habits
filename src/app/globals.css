@@ -3,17 +3,25 @@
 
 /* ------------------------------
    Light Mode Theme Variables
+   Design professionnel - Sans gradients
 --------------------------------*/
 :root {
-  --background: #F9FAFB;
-  --foreground: #111827;
+  --background: #FFFFFF;
+  --foreground: #1F2937;
   --card: #FFFFFF;
-  --card-foreground: #111827;
-  --primary: #3B82F6;
+  --card-foreground: #1F2937;
+  --primary: #111827;
   --primary-foreground: #FFFFFF;
-  --muted: #F3F4F6;
+  --secondary: #F3F4F6;
+  --secondary-foreground: #374151;
+  --muted: #F9FAFB;
   --muted-foreground: #6B7280;
   --border: #E5E7EB;
+  --accent: #3B82F6;
+  --accent-foreground: #FFFFFF;
+  --success: #059669;
+  --warning: #D97706;
+  --error: #DC2626;
 }
 
 /* ------------------------------
@@ -24,11 +32,18 @@
   --foreground: #F9FAFB;
   --card: #1F2937;
   --card-foreground: #F9FAFB;
-  --primary: #60A5FA;
+  --primary: #F9FAFB;
   --primary-foreground: #111827;
-  --muted: #374151;
+  --secondary: #374151;
+  --secondary-foreground: #E5E7EB;
+  --muted: #1F2937;
   --muted-foreground: #9CA3AF;
-  --border: #4B5563;
+  --border: #374151;
+  --accent: #60A5FA;
+  --accent-foreground: #111827;
+  --success: #10B981;
+  --warning: #FBBF24;
+  --error: #EF4444;
 }
 
 /* ------------------------------
@@ -41,11 +56,18 @@
   --color-card-foreground: var(--card-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-input: var(--border);
   --color-ring: var(--primary);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
 
   --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-family-mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'Roboto Mono', monospace;
@@ -58,11 +80,25 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-family-sans);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
   border-color: var(--border);
+}
+
+/* ------------------------------
+   Typography
+--------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+p {
+  color: var(--foreground);
 }
 
 /* ------------------------------
@@ -77,15 +113,15 @@ body {
 }
 
 .page-title {
-  @apply text-3xl font-bold mb-2;
+  @apply text-2xl font-semibold text-foreground mb-2;
 }
 
 .page-description {
-  @apply text-muted-foreground;
+  @apply text-muted-foreground text-sm;
 }
 
 .section-title {
-  @apply text-2xl font-semibold mb-4;
+  @apply text-lg font-semibold text-foreground mb-4;
 }
 
 .form-section {
@@ -93,33 +129,37 @@ body {
 }
 
 .habit-card {
-  @apply bg-card rounded-xl border border-border p-6 hover:shadow-md transition-shadow duration-200;
+  @apply bg-card rounded-lg border border-border p-6 transition-shadow duration-200;
 }
 
-/* Badges */
+.habit-card:hover {
+  @apply shadow-sm;
+}
+
+/* Badges - Design épuré */
 .badge {
-  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium;
 }
 
 .badge-primary {
-  @apply bg-primary/10 text-primary;
+  @apply bg-secondary text-foreground;
 }
 
 .badge-success {
-  @apply bg-green-100 text-green-800;
+  @apply bg-success/10 text-success;
 }
 
 .badge-warning {
-  @apply bg-yellow-100 text-yellow-800;
+  @apply bg-warning/10 text-warning;
 }
 
 .badge-error {
-  @apply bg-red-100 text-red-800;
+  @apply bg-error/10 text-error;
 }
 
-/* Stat Card */
+/* Stat Card - Sans gradient */
 .stat-card {
-  @apply bg-gradient-to-br from-primary to-primary/80 text-primary-foreground rounded-xl p-6 shadow-lg;
+  @apply bg-primary text-primary-foreground rounded-lg p-6;
 }
 
 /* ------------------------------
@@ -139,45 +179,43 @@ body {
 }
 
 .transition-theme {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .transition-transform-opacity {
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
-/* Hover Effects */
+/* Hover Effects - Subtiles */
 .hover-lift {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .hover-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px -2px rgb(0 0 0 / 0.08);
 }
 
 .hover-scale {
-  transition: transform 0.2s ease;
+  transition: transform 0.15s ease;
 }
 
 .hover-scale:hover {
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 /* Skeleton */
 .skeleton {
-  @apply bg-muted dark:bg-muted rounded animate-pulse;
+  @apply bg-secondary rounded animate-pulse;
 }
 
 /* ------------------------------
-   Animations
+   Animations - Subtiles et professionnelles
 --------------------------------*/
 @keyframes fade-in {
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
@@ -187,7 +225,6 @@ body {
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0;
   }
@@ -195,10 +232,9 @@ body {
 
 @keyframes slide-up {
   from {
-    transform: translateY(20px);
+    transform: translateY(8px);
     opacity: 0;
   }
-
   to {
     transform: translateY(0);
     opacity: 1;
@@ -207,10 +243,9 @@ body {
 
 @keyframes slide-down {
   from {
-    transform: translateY(-20px);
+    transform: translateY(-8px);
     opacity: 0;
   }
-
   to {
     transform: translateY(0);
     opacity: 1;
@@ -222,7 +257,6 @@ body {
     transform: translateX(100%);
     opacity: 0;
   }
-
   to {
     transform: translateX(0);
     opacity: 1;
@@ -234,7 +268,6 @@ body {
     transform: translateX(-100%);
     opacity: 0;
   }
-
   to {
     transform: translateX(0);
     opacity: 1;
@@ -243,18 +276,12 @@ body {
 
 @keyframes bounce-in {
   0% {
-    transform: scale(0.3);
+    transform: scale(0.9);
     opacity: 0;
   }
-
   50% {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
-
-  70% {
-    transform: scale(0.9);
-  }
-
   100% {
     transform: scale(1);
     opacity: 1;
@@ -263,10 +290,9 @@ body {
 
 @keyframes scale-in {
   from {
-    transform: scale(0.95);
+    transform: scale(0.98);
     opacity: 0;
   }
-
   to {
     transform: scale(1);
     opacity: 1;
@@ -274,14 +300,12 @@ body {
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     opacity: 1;
   }
-
   50% {
-    opacity: 0.5;
+    opacity: 0.7;
   }
 }
 
@@ -289,7 +313,6 @@ body {
   0% {
     background-position: -200% 0;
   }
-
   100% {
     background-position: 200% 0;
   }
@@ -299,7 +322,6 @@ body {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
@@ -309,7 +331,6 @@ body {
   0% {
     stroke-dashoffset: 50;
   }
-
   100% {
     stroke-dashoffset: 0;
   }
@@ -317,35 +338,35 @@ body {
 
 /* Animation utilities */
 .animate-fade-in {
-  animation: fade-in 0.3s ease-out forwards;
+  animation: fade-in 0.2s ease-out forwards;
 }
 
 .animate-fade-out {
-  animation: fade-out 0.3s ease-out forwards;
+  animation: fade-out 0.2s ease-out forwards;
 }
 
 .animate-slide-up {
-  animation: slide-up 0.4s ease-out forwards;
+  animation: slide-up 0.3s ease-out forwards;
 }
 
 .animate-slide-down {
-  animation: slide-down 0.4s ease-out forwards;
+  animation: slide-down 0.3s ease-out forwards;
 }
 
 .animate-slide-in-right {
-  animation: slide-in-right 0.3s ease-out forwards;
+  animation: slide-in-right 0.2s ease-out forwards;
 }
 
 .animate-slide-in-left {
-  animation: slide-in-left 0.3s ease-out forwards;
+  animation: slide-in-left 0.2s ease-out forwards;
 }
 
 .animate-bounce-in {
-  animation: bounce-in 0.5s ease-out forwards;
+  animation: bounce-in 0.3s ease-out forwards;
 }
 
 .animate-scale-in {
-  animation: scale-in 0.2s ease-out forwards;
+  animation: scale-in 0.15s ease-out forwards;
 }
 
 .animate-pulse {
@@ -353,7 +374,7 @@ body {
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--secondary) 25%, var(--muted) 50%, var(--secondary) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
@@ -365,53 +386,59 @@ body {
 .animate-checkmark {
   stroke-dasharray: 50;
   stroke-dashoffset: 50;
-  animation: checkmark 0.3s ease-out forwards;
+  animation: checkmark 0.2s ease-out forwards;
 }
 
 /* Staggered animations */
-.stagger-animation>* {
+.stagger-animation > * {
   opacity: 0;
-  animation: slide-up 0.4s ease-out forwards;
+  animation: slide-up 0.3s ease-out forwards;
 }
 
-.stagger-animation>*:nth-child(1) {
+.stagger-animation > *:nth-child(1) {
   animation-delay: 0ms;
 }
 
-.stagger-animation>*:nth-child(2) {
-  animation-delay: 50ms;
+.stagger-animation > *:nth-child(2) {
+  animation-delay: 30ms;
 }
 
-.stagger-animation>*:nth-child(3) {
-  animation-delay: 100ms;
+.stagger-animation > *:nth-child(3) {
+  animation-delay: 60ms;
 }
 
-.stagger-animation>*:nth-child(4) {
+.stagger-animation > *:nth-child(4) {
+  animation-delay: 90ms;
+}
+
+.stagger-animation > *:nth-child(5) {
+  animation-delay: 120ms;
+}
+
+.stagger-animation > *:nth-child(6) {
   animation-delay: 150ms;
 }
 
-.stagger-animation>*:nth-child(5) {
-  animation-delay: 200ms;
+.stagger-animation > *:nth-child(7) {
+  animation-delay: 180ms;
 }
 
-.stagger-animation>*:nth-child(6) {
-  animation-delay: 250ms;
+.stagger-animation > *:nth-child(8) {
+  animation-delay: 210ms;
 }
 
-.stagger-animation>*:nth-child(7) {
-  animation-delay: 300ms;
+.stagger-animation > *:nth-child(9) {
+  animation-delay: 240ms;
 }
 
-.stagger-animation>*:nth-child(8) {
-  animation-delay: 350ms;
+.stagger-animation > *:nth-child(10) {
+  animation-delay: 270ms;
 }
 
-.stagger-animation>*:nth-child(9) {
-  animation-delay: 400ms;
-}
-
-.stagger-animation>*:nth-child(10) {
-  animation-delay: 450ms;
+/* Focus styles - Professionnels */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 /* Print */
