@@ -3,7 +3,6 @@
 
 /* ------------------------------
    Light Mode Theme Variables
-   Design professionnel - Sans gradients
 --------------------------------*/
 :root {
   --background: #FFFFFF;
@@ -92,7 +91,12 @@ body {
 /* ------------------------------
    Typography
 --------------------------------*/
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--foreground);
   font-weight: 600;
 }
@@ -216,6 +220,7 @@ p {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -225,6 +230,7 @@ p {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -235,6 +241,7 @@ p {
     transform: translateY(8px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -246,6 +253,7 @@ p {
     transform: translateY(-8px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -257,6 +265,7 @@ p {
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -268,6 +277,7 @@ p {
     transform: translateX(-100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -279,9 +289,11 @@ p {
     transform: scale(0.9);
     opacity: 0;
   }
+
   50% {
     transform: scale(1.02);
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -293,6 +305,7 @@ p {
     transform: scale(0.98);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
@@ -300,10 +313,12 @@ p {
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.7;
   }
@@ -313,6 +328,7 @@ p {
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -322,6 +338,7 @@ p {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -331,6 +348,7 @@ p {
   0% {
     stroke-dashoffset: 50;
   }
+
   100% {
     stroke-dashoffset: 0;
   }
@@ -390,48 +408,48 @@ p {
 }
 
 /* Staggered animations */
-.stagger-animation > * {
+.stagger-animation>* {
   opacity: 0;
   animation: slide-up 0.3s ease-out forwards;
 }
 
-.stagger-animation > *:nth-child(1) {
+.stagger-animation>*:nth-child(1) {
   animation-delay: 0ms;
 }
 
-.stagger-animation > *:nth-child(2) {
+.stagger-animation>*:nth-child(2) {
   animation-delay: 30ms;
 }
 
-.stagger-animation > *:nth-child(3) {
+.stagger-animation>*:nth-child(3) {
   animation-delay: 60ms;
 }
 
-.stagger-animation > *:nth-child(4) {
+.stagger-animation>*:nth-child(4) {
   animation-delay: 90ms;
 }
 
-.stagger-animation > *:nth-child(5) {
+.stagger-animation>*:nth-child(5) {
   animation-delay: 120ms;
 }
 
-.stagger-animation > *:nth-child(6) {
+.stagger-animation>*:nth-child(6) {
   animation-delay: 150ms;
 }
 
-.stagger-animation > *:nth-child(7) {
+.stagger-animation>*:nth-child(7) {
   animation-delay: 180ms;
 }
 
-.stagger-animation > *:nth-child(8) {
+.stagger-animation>*:nth-child(8) {
   animation-delay: 210ms;
 }
 
-.stagger-animation > *:nth-child(9) {
+.stagger-animation>*:nth-child(9) {
   animation-delay: 240ms;
 }
 
-.stagger-animation > *:nth-child(10) {
+.stagger-animation>*:nth-child(10) {
   animation-delay: 270ms;
 }
 
